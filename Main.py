@@ -37,4 +37,5 @@ indicator_choice = MultiChoice(options=["100 Day SMA", "30 Day SMA", "Linear Reg
 
 load_button = Button(label="Load Data", button_type="success")
 
-load_button.on_click = (lambda(label="Load Data", button_type="success")
+load_button.on_click = (lambda: on_button_clicked(stock1_text.value, stock2_text.value, date_picker_from.value, date_picker_to.value, indicator_choice.value))
+
