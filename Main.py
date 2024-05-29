@@ -41,12 +41,6 @@ def plot_data(data, indicator, sync_axis=None):
     
     return p
     
-    
-    if indicator is not None:
-        for indicator in indicator:
-    
-    
-    
 def on_button_clicked(ticker1, ticker2, start, end, indicators):
     df1, df2 = load_data(ticker1, ticker2, start, end)
     p1 = plot_data(df1, indicators)
