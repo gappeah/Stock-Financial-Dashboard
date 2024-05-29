@@ -26,8 +26,27 @@ def plot_data(data, indicator, sync_axis=None):
     loss = df.Open > df.Close
     width = 12 * 60 * 60 * 1000  # half day in ms
     
+    if sync_axis is not None:
+        p = figure (x_axis_type="datetime", tools="pan,wheel_zoom,box_zoom,reset, save", width=1000, x_range=sync_axis)
+    else:
+        p = figure (x_axis_type="datetime", tools="pan,wheel_zoom,box_zoom,reset, save", width=1000)
 
 
+    p.xacis.major_label_orientation = math.pi / 4
+    p.grid.grid_line_alpha=0.25
+    
+    p.segment(df.index, df.High, df.index, df.Low, color="black")
+    p.vbar(df.index[gain], width, df.Open[gain], df.Close[gain], fill_color="#00ff00", line_color="#00ff00")
+    p.vbar(df.index[loss], width, df.Open[loss], df.Close[loss], fill_color="#ff0000", line_color="#ff0000")
+    
+    return p
+    
+    
+    if indicator is not None:
+        for indicator in indicator:
+    
+    
+    
 def on_button_clicked(ticker1, ticker2, start, end, indicators):
     df1, df2 = load_data(ticker1, ticker2, start, end)
     p1 = plot_data(df1, indicators)
