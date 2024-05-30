@@ -1,11 +1,11 @@
-# Financial Dashboard
+#  Stock Financial Dashboard 
 
 This is a Bokeh application that allows you to visualise stock data for two stocks of your choice. You can select the stock tickers, date range, and technical indicators to display on the chart.
 
 ## Features
 
 - View candlestick charts for two stocks side by side
-- Select custom date range
+- Select a custom date range
 - Display technical indicators:
   - 30-day Simple Moving Average (SMA)
   - 100-day Simple Moving Average (SMA)
