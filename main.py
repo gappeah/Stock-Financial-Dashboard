@@ -37,16 +37,16 @@ def plot_data(df, indicator, sync_axis=None):
     for indicator in indicator:
         if indicator == '30 Day SMA':
             df['SMA30'] = df['Close'].rolling(window=30).mean()
-            p.line(df.index, df['SMA30'], color='purple', legend_label='30 Day SMA', line_width=2)
+            p.line(df.index, df['SMA30'], color='orange', legend_label='30 Day SMA', line_width=2)
         elif indicator == '100 Day SMA':
-            df['SMA100'] = df['Close'].rolling(window=30).mean()
-            p.line(df.index, df['SMA100'], color='purple', legend_label='100 Day SMA', line_width=2)
+            df['SMA100'] = df['Close'].rolling(window=100).mean()
+            p.line(df.index, df['SMA100'], color='blue', legend_label='100 Day SMA', line_width=2)
         elif indicator == 'Linear Regression':
             par = np.polyfit(range(len(df.index.values)), df['Close'].values, 1, full=True)
             slope = par[0][0]
             intercept = par[0][1]
             y_pred = [slope * i + intercept for i in range(len(df.index.values))]
-            p.segment(df.index[0], y_pred[0], df.index[-1], y_pred[-1], color='red', legend_label='Linear Regression', line_width=2)  
+            p.segment(df.index[0], y_pred[0], df.index[-1], y_pred[-1], color='pink', legend_label='Linear Regression', line_width=2)  
             
         p.legend.location = "top_left"
         p.legend.click_policy = "hide"
@@ -81,4 +81,3 @@ layout = column(stock1_text, stock2_text, date_picker_from, date_picker_to, indi
 
 curdoc().clear()
 curdoc().add_root(layout)
-#Indicators are not showin
